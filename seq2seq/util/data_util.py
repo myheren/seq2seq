@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 import codecs
 import collections
 import os.path
@@ -174,7 +175,7 @@ def create_embedding_file(embedding_file,
             for vocab in embedding_table.keys():
                 embed = embedding_table[vocab]
                 embed_str = " ".join(map(str, embed))
-                file.write("{0} {1}\n".format(vocab, embed_str))
+                file.write("%s %s\n" % (vocab, embed_str))
 
 def convert_embedding(embedding_lookup):
     if embedding_lookup is not None:
@@ -287,7 +288,7 @@ def create_vocab_file(vocab_file,
     if not tf.gfile.Exists(vocab_file):
         with codecs.getwriter("utf-8")(tf.gfile.GFile(vocab_file, "w")) as file:
             for vocab in vocab_table:
-                file.write("{0}\n".format(vocab))
+                file.write("%s\n" % (vocab))
 
 def load_input(text_file):
     """load data from text file"""
