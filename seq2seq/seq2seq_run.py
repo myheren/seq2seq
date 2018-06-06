@@ -96,7 +96,10 @@ def decode_eval(logger,
                 random_seed,
                 global_step):
     np.random.seed(random_seed)
-    sample_ids = np.random.randint(0, len(src_input)-1, size=sample_size)
+    if(len(src_input) == 1):
+        sample_ids = np.array([0])
+    else:
+        sample_ids = np.random.randint(0, len(src_input)-1, size=sample_size)
     src_sample_inputs = [src_input[sample_id] for sample_id in sample_ids]
     trg_sample_inputs = [trg_input[sample_id] for sample_id in sample_ids]
     
